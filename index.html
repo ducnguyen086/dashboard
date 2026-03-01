@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIRAE ASSET Finance Study - Ver 3.0</title>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <style>
+        body,
+        html {
+            font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div class="room-container">
+        <!-- 1. Wall Corkboard (Home/Overview) -->
+        <div class="wall-board" id="nav-home" data-target="overview">
+            <!-- Left Side: Gauges (User Style 2) -->
+            <!-- Left Side: Dual Gauge Display (Cropped from 'Bao Quát' per Request) -->
+            <!-- Left Side: Dual SVG Gauge Display (High Fidelity) -->
+            <div class="board-left" id="gauge-container-main">
+
+                <!-- Ngắn hạn Gauge -->
+                <div class="svg-gauge-box" id="gauge-box-short">
+                    <div class="gauge-title-sm">Ngắn hạn</div>
+                    <div class="gauge-svg-container">
+                        <svg viewBox="0 0 200 120" style="width:100%; height:100%;">
+                            <!-- Arcs -->
+                            <path d="M 30 100 A 70 70 0 0 1 170 100" class="gauge-arc-bg" />
+                            <path d="M 30 100 A 70 70 0 0 1 65 39" class="gauge-arc-red" />
+                            <path d="M 65 39 A 70 70 0 0 1 100 30" class="gauge-arc-yellow" />
+                            <path d="M 100 30 A 70 70 0 0 1 135 39" class="gauge-arc-green-lt" />
+                            <path d="M 135 39 A 70 70 0 0 1 170 100" class="gauge-arc-green-dk" />
+                            <!-- Needle -->
+                            <path id="needle-short" d="M 100 100 L 100 40" stroke="#1e88e5" stroke-width="4"
+                                stroke-linecap="round"
+                                style="transform-origin: 100px 100px; transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);" />
+                            <circle cx="100" cy="100" r="6" fill="#1e88e5" />
+                            <!-- Value Text -->
+                            <text x="100" y="85" id="val-short" class="gauge-center-val-svg">--</text>
+                            <text x="100" y="105" id="status-short" class="gauge-status-svg">LOAD</text>
+                            <!-- Ticks -->
+                            <text x="25" y="110" font-size="8" fill="#aaa">0</text>
+                            <text x="50" y="60" font-size="8" fill="#aaa">25</text>
+                            <text x="100" y="25" font-size="8" fill="#aaa">50</text>
+                            <text x="150" y="60" font-size="8" fill="#aaa">75</text>
+                            <text x="175" y="110" font-size="8" fill="#aaa">100</text>
+                        </svg>
+                    </div>
+                    <!-- History Dots -->
+                    <div class="gauge-history-dots">
+                        <div class="dot-item">
+                            <div class="dot-circle" id="short-m">--</div>
+                            <div class="dot-label">Tháng trước</div>
+                        </div>
+                        <div class="dot-item">
+                            <div class="dot-circle" id="short-w">--</div>
+                            <div class="dot-label">Tuần trước</div>
+                        </div>
+                        <div class="dot-item">
+                            <div class="dot-circle" id="short-d">--</div>
+                            <div class="dot-label">Ngày trước</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trung hạn Gauge -->
+                <div class="svg-gauge-box" id="gauge-box-mid">
+                    <div class="gauge-title-sm">Trung hạn</div>
+                    <div class="gauge-svg-container">
+                        <svg viewBox="0 0 200 120" style="width:100%; height:100%;">
+                            <path d="M 30 100 A 70 70 0 0 1 170 100" class="gauge-arc-bg" />
+                            <path d="M 30 100 A 70 70 0 0 1 65 39" class="gauge-arc-red" />
+                            <path d="M 65 39 A 70 70 0 0 1 100 30" class="gauge-arc-yellow" />
+                            <path d="M 100 30 A 70 70 0 0 1 135 39" class="gauge-arc-green-lt" />
+                            <path d="M 135 39 A 70 70 0 0 1 170 100" class="gauge-arc-green-dk" />
+                            <path id="needle-mid" d="M 100 100 L 100 40" stroke="#1e88e5" stroke-width="4"
+                                stroke-linecap="round"
+                                style="transform-origin: 100px 100px; transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);" />
+                            <circle cx="100" cy="100" r="6" fill="#1e88e5" />
+                            <text x="100" y="85" id="val-mid" class="gauge-center-val-svg">--</text>
+                            <text x="100" y="105" id="status-mid" class="gauge-status-svg">LOAD</text>
+                            <text x="25" y="110" font-size="8" fill="#aaa">0</text>
+                            <text x="50" y="60" font-size="8" fill="#aaa">25</text>
+                            <text x="100" y="25" font-size="8" fill="#aaa">50</text>
+                            <text x="150" y="60" font-size="8" fill="#aaa">75</text>
+                            <text x="175" y="110" font-size="8" fill="#aaa">100</text>
+                        </svg>
+                    </div>
+                    <div class="gauge-history-dots">
+                        <div class="dot-item">
+                            <div class="dot-circle" id="mid-m">--</div>
+                            <div class="dot-label">Tháng trước</div>
+                        </div>
+                        <div class="dot-item">
+                            <div class="dot-circle" id="mid-w">--</div>
+                            <div class="dot-label">Tuần trước</div>
+                        </div>
+                        <div class="dot-item">
+                            <div class="dot-circle" id="mid-d">--</div>
+                            <div class="dot-label">Ngày trước</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Center: Main Stats -->
+            <div class="main-stats">
+                <h1 class="main-title">FINANCE STUDY CENTER</h1>
+                <div class="main-index-val" id="ov-vn-val">0,000.00</div>
+                <div class="main-change" id="ov-vn-chg">+0.00%</div>
+                <div class="main-date" id="trading-date">Dữ liệu: --/--/----</div>
+            </div>
+
+            <!-- Right Side: Sticky Notes area -->
+            <div class="board-right">
+                <div class="sticky-notes-area" id="highlights-container"></div>
+            </div>
+        </div>
+
+        <!-- 2. Bookshelf -->
+        <div class="bookshelf">
+            <div class="shelf-label">PHÂN TÍCH</div>
+            <div class="books-container">
+                <div class="book fundamental-book" data-target="fundamental">
+                    <span class="book-spine">CƠ BẢN</span>
+                </div>
+                <div class="book technical-book" data-target="technical">
+                    <span class="book-spine">KỸ THUẬT</span>
+                </div>
+                <div class="book statistics-book" data-target="statistics">
+                    <span class="book-spine">THỐNG KÊ</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Desktop Area -->
+        <main class="desk-surface">
+            <div class="desk-mat">
+                <div class="document-tray">
+                    <div id="content-display" class="active-document">
+                        <div class="welcome-doc" style="padding:40px; text-align:center;">
+                            <h1>Chào buổi chiều, Duc Nguyen!</h1>
+                            <p>Chọn hồ sơ nghiên cứu để bắt đầu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 4. File Cabinet -->
+        <div class="file-cabinet">
+            <div class="cabinet-brand">
+                <img src="logo_mas.png" alt="MAS" style="width: 80px; filter: brightness(2);">
+            </div>
+            <div class="drawer" data-target="news">
+                <div class="drawer-handle"></div>
+                <div class="drawer-label">TIN TỨC</div>
+            </div>
+            <div class="drawer" data-target="recommendation">
+                <div class="drawer-handle"></div>
+                <div class="drawer-label">KHUYẾN NGHỊ</div>
+            </div>
+            <div class="drawer admin-drawer" data-target="admin">
+                <div class="drawer-handle"></div>
+                <div class="drawer-label">QUẢN LÝ</div>
+            </div>
+        </div>
+
+    </div> <!-- End .room-container -->
+
+    <!-- UI Controls (Lamps, Cards) - Moved outside filter context -->
+    <div class="ui-overlays">
+        <!-- Minimalist Signature Tag -->
+        <div class="author-card">
+            <div class="card-title">DUC NGUYEN</div>
+            <div class="card-info"><i class="fas fa-phone"></i> 09 48 90 33 49</div>
+            <div class="card-info"><i class="fas fa-envelope"></i> Ducnguyen@gmail.com</div>
+            <div class="card-info"><i class="fas fa-chart-line"></i> Researcher</div>
+        </div>
+
+        <!-- Theme Toggle Lamp -->
+        <div class="lamp-container" id="theme-toggle">
+            <svg viewBox="0 0 100 100" class="lamp-svg">
+                <path d="M50 10 C30 10 20 25 20 40 L80 40 C80 25 70 10 50 10 Z" />
+                <rect x="45" y="40" width="10" height="45" />
+                <ellipse cx="50" cy="85" rx="20" ry="10" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Templates -->
+    <div id="templates" class="hidden">
+        <!-- Overview -->
+        <div id="template-overview">
+            <div class="folder-header" id="ov-tabs"></div>
+            <div class="paper-content" id="ov-content"></div>
+        </div>
+
+        <!-- Fundamental -->
+        <div id="template-fundamental">
+            <div class="paper-content">
+                <div class="total-count-badge" id="total-tickers">TỔNG: -- MÃ</div>
+                <h2 class="doc-title">Hồ sơ Chỉ tiêu Tài chính Cơ bản</h2>
+                <div class="table-scroll" style="overflow-x:auto;">
+                    <table class="classic-table">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>MÃ</th>
+                                <th>CHỈ SỐ</th>
+                                <th>NGÀNH</th>
+                                <th>EPS</th>
+                                <th>P/E</th>
+                                <th>P/B</th>
+                                <th>ROE</th>
+                                <th>ROA</th>
+                                <th>BETA</th>
+                                <th>XẾP HẠNG</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ftable"></tbody>
+                    </table>
+                </div>
+                <div class="pagination-tray">
+                    <button class="pg-btn" id="pg-prev" disabled>Lùi lại</button>
+                    <span class="pg-info" id="pg-info">Trang 1 / --</span>
+                    <button class="pg-btn" id="pg-next">Tiếp theo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- News (Folder Interface) -->
+        <div id="template-news">
+            <div class="folder-header" id="news-tabs"></div>
+            <div class="paper-content" id="news-content">
+                <!-- List will be injected here -->
+                <div id="news-list-container"></div>
+                <!-- Pagination moved inside to stay close to content -->
+                <div class="pagination-tray">
+                    <button class="pg-btn" id="news-prev" disabled>Lùi lại</button>
+                    <span class="pg-info" id="news-info">Trang 1 / --</span>
+                    <button class="pg-btn" id="news-next">Tiếp theo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Analysis (Folder Interface) -->
+        <div id="template-technical">
+            <div class="folder-header" id="tech-tabs"></div>
+            <div class="paper-content" id="tech-content"></div>
+        </div>
+
+        <!-- Statistics (Folder Interface) -->
+        <div id="template-statistics">
+            <div class="folder-header" id="stats-tabs"></div>
+            <div class="paper-content" id="stats-content"></div>
+        </div>
+
+        <!-- Recommendation (Folder Interface) -->
+        <div id="template-recommendation">
+            <div class="folder-header" id="rec-tabs"></div>
+            <div class="paper-content" id="rec-content"></div>
+        </div>
+
+        <!-- Admin -->
+        <div id="template-admin">
+            <div class="paper-content">
+                <h2 class="doc-title">Trình Quản lý Dữ liệu</h2>
+                <textarea id="admin-raw-data"
+                    style="width:100%; height:200px; padding:15px; border-radius:8px; border:1px solid #ccc;"></textarea>
+                <button class="pg-btn" id="btn-save-data" style="margin-top:10px;">Lưu Cấu hình</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script order -->
+    <script src="data_v26.js"></script>
+    <script src="script_v26.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>
